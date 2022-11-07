@@ -1,6 +1,19 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>포트폴리오</span>
-</mat-toolbar>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" [opened]="true">
+    <p>list?</p>
+    <mat-list>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/recom">recommendations</a>
+      <a mat-list-item routerLink="/overview">overview</a>
+    </mat-list>
+  </mat-drawer>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>포트폴리오</span>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
