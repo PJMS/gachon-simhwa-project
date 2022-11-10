@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { ForeseeResultComponent } from './foresee-result.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('ForeseeResultComponent', () => {
+  let component: ForeseeResultComponent;
+  let fixture: ComponentFixture<ForeseeResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ ForeseeResultComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ForeseeResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

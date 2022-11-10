@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 export class OverviewComponent implements OnInit {
   constructor(private svc: ApiService) {}
 
-  dataSource$ = this.svc.getPERPBR();
+  // dataSource$ = this.svc.getPERPBR();
 
   ngOnInit(): void {}
 }

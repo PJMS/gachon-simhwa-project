@@ -1,0 +1,52 @@
+<h1>다음 개장일의 주가를 예측해봅니다.</h1>
+
+<mat-stepper orientation="vertical" [linear]="false" #stepper>
+  <mat-step [stepControl]="jongmokCode">
+    <ng-template matStepLabel>종목 선택</ng-template>
+
+    <mat-form-field appearance="fill">
+      <mat-label>종목을 선택해주세요.</mat-label>
+      <input matInput
+             [matAutocomplete]="auto"
+             [formControl]="jongmokCode" required>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let jongmok of jongmokList$ | async" [value]="jongmok.code">
+          <span>{{ jongmok.name }}</span>
+          &nbsp;<small>{{ jongmok.code }}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" matStepperNext>다음</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="prevCount">
+    <ng-template matStepLabel>기간 선택</ng-template>
+    <mat-label>예측에 사용할 기간을 입력해주세요.</mat-label>
+    <div >
+      <mat-slider
+        [style.width]="'80%'"
+        class="example-margin"
+        [max]="100"
+        [min]="5"
+        [step]="1"
+        [thumbLabel]="true"
+        [formControl]="prevCount"
+      ></mat-slider>
+      <p>{{prevCount.value}}일</p>
+    </div>
+    <div>
+      <button mat-raised-button matStepperPrevious>이전</button>
+      <button mat-raised-button color="primary" matStepperNext>다음</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>결과 확인</ng-template>
+    <p>아래 버튼을 눌러주세요!</p>
+    <div>
+      <button mat-raised-button color="primary" (click)="open()">결과 확인!</button>
+      <br>
+      <button mat-raised-button (click)="stepper.reset()">처음부터 다시 하기</button>
+    </div>
+  </mat-step>
+</mat-stepper>

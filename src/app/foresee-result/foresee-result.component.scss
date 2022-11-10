@@ -1,0 +1,54 @@
+.mat-card {
+  margin: 1em 0;
+  min-width: 180px;
+  text-align: center;
+}
+
+.mat-dialog-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mat-spinner {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(240, 240, 240);
+  border-radius: 50%;
+}
+
+.price {
+  font-size: 2em;
+}
+
+.diff {
+  font-weight: bold;
+  &::before {
+    content: "";
+    display: inline-block;
+    margin-right: 0.3em;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  &.up {
+    color: green;
+    &::before {
+      border-width: 0 5px 6px 5px;
+      border-color: transparent transparent currentColor transparent;
+    }
+    font-weight: bold;
+  }
+  &.down {
+    color: red;
+    &::before {
+      border-width: 6px 5px 0 5px;
+      border-color: currentColor transparent transparent transparent;
+    }
+  }
+}
+
+.mat-card-content {
+  margin-top: 1em;
+}

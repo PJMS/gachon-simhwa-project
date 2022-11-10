@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>추론 결과</h1>
+<ng-template #loading>
+  <div mat-dialog-content>
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+<div mat-dialog-content *ngIf="result$ | async as result; else loading">
+  <mat-card>
+    <mat-card-title>예측 주가</mat-card-title>
+    <mat-card-content>
+      <p class="price">{{ result.estmPrice | number }}</p>
+      <p class="diff" [ngClass]="+(result.diff) > 0 ? 'up' : 'down'">전일대비: {{ result.diff | percent }}</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>신뢰도</mat-card-title>
+    <mat-card-content>
+      <p class="price">{{ result.confidence | percent }}</p>
+      <mat-progress-spinner
+        color="primary"
+        [mode]="'determinate'"
+        [value]="+result.confidence * 100">
+    </mat-progress-spinner>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>닫기</button>
+</div>
