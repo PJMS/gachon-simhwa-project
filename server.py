@@ -1,5 +1,5 @@
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 from pandas import DataFrame, concat
 from pandas_datareader import data as pdr
 from xgboost import XGBRegressor
@@ -11,7 +11,13 @@ app = Flask(__name__,
             template_folder='dist/portfolio')
 
 
+@app.route('/')
+def indexhtml():
+    return render_template('index.html')
+
 # 주가 예측 기능에 사용
+
+
 @app.route('/api/foresee', methods=['GET'])
 def foresee():
     params = request.args
