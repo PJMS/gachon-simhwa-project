@@ -12,17 +12,6 @@
       <p class="diff" [ngClass]="+(result.diff) > 0 ? 'up' : 'down'">전일대비: {{ result.diff | percent }}</p>
     </mat-card-content>
   </mat-card>
-  <mat-card>
-    <mat-card-title>신뢰도</mat-card-title>
-    <mat-card-content>
-      <p class="price">{{ result.confidence | percent }}</p>
-      <mat-progress-spinner
-        color="primary"
-        [mode]="'determinate'"
-        [value]="+result.confidence * 100">
-    </mat-progress-spinner>
-    </mat-card-content>
-  </mat-card>
 
 </div>
 

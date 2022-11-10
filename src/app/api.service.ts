@@ -29,27 +29,20 @@ export class ApiService {
     estmPrice: string;
     lastPrice: string;
     diff: string; // 0~1 percentage
-    confidence: string; // 0~1
   }> {
     return this.httpClient
       .get<{
         estmPrice: string;
         lastPrice: string;
-        confidence: string;
       }>(`${environment.apiUrl}/foresee`, {
         params: { ...payload },
       })
       .pipe(
-        // catchError(() => of({})),
-        // map(() => ({
-        //   estmPrice: '234.32',
-        //   lastPrice: '200.22',
-        //   confidence: '0.65',
-        // })),
         map((res) => ({
           ...res,
           diff: new BigNumber(res.estmPrice)
             .div(res.lastPrice)
+            .minus(1)
             .toFixed(2, BigNumber.ROUND_CEIL),
         }))
       );
