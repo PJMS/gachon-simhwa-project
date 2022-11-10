@@ -1,12 +1,14 @@
-import os
 
 from flask import Flask, jsonify, request
 from pandas import DataFrame, concat
 from pandas_datareader import data as pdr
 from xgboost import XGBRegressor
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app = Flask(__name__)
+# basedir = os.path.abspath(os.path.dirname(__file__))
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='dist/portfolio',
+            template_folder='dist/portfolio')
 
 
 # 주가 예측 기능에 사용
@@ -51,3 +53,7 @@ def foresee():
     )
 
     return result
+
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=8080)
