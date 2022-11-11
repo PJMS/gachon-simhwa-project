@@ -1,13 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import BigNumber from 'bignumber.js';
-import csv from 'csvtojson';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ForeseeDialogData } from './foresee-result/foresee-result.component';
 import { PerPbr } from './models';
-
-const csvParser = csv();
 
 @Injectable({
   providedIn: 'root',
