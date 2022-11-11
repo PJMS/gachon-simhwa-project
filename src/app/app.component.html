@@ -1,12 +1,11 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" [opened]="true">
-    <p>list?</p>
-    <mat-list>
+    <mat-nav-list>
       <a mat-list-item routerLink="/">홈</a>
       <a mat-list-item routerLink="/foresee">주가 예측</a>
       <!-- <a mat-list-item routerLink="/recom">종목 추천</a> -->
       <a mat-list-item routerLink="/overview">주식 데이터 확인(준비중)</a>
-    </mat-list>
+    </mat-nav-list>
   </mat-drawer>
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="drawer.toggle()">
@@ -14,7 +13,8 @@
     </button>
     <span>심화프로그래밍 프로젝트</span>
   </mat-toolbar>
-
-  <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 
 </mat-drawer-container>

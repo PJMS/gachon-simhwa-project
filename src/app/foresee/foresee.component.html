@@ -1,6 +1,8 @@
 <main>
   <h1>다음 개장일의 주가를 예측해봅니다.</h1>
 
+  <p>예측 값은 해당 종목의 이전 주가 추이를 기반으로 산정합니다.</p>
+
   <mat-stepper orientation="vertical" [linear]="false" #stepper>
     <mat-step [stepControl]="jongmokCode">
       <ng-template matStepLabel>종목 선택</ng-template>
