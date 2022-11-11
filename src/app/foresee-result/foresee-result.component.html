@@ -9,7 +9,7 @@
     <mat-card-title>예측 주가</mat-card-title>
     <mat-card-content>
       <p class="price">{{ result.estmPrice | number }}</p>
-      <p class="diff" [ngClass]="+(result.diff) > 0 ? 'up' : 'down'">전일대비: {{ result.diff | percent: '.0-2' }}</p>
+      <p class="diff" [ngClass]="+(result.diff) > 0 ? 'up' : 'down'">전일대비: {{ result.diff | percent: '.2-2' }}</p>
     </mat-card-content>
   </mat-card>
 
