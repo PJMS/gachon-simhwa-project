@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { combineLatest, map, shareReplay, startWith, switchMap } from 'rxjs';
+import { map, shareReplay, startWith, switchMap } from 'rxjs';
 import { ApiService } from '../api.service';
 import {
   ForeseeDialogData,
@@ -19,7 +19,6 @@ export class ForeseeComponent implements OnInit {
   jongmokCode = new FormControl<string>('');
   prevCount = new FormControl<number>(7);
 
-  a = combineLatest([this.apiService.getAll()]);
   jongmokList$ = this.apiService.getAll().pipe(
     shareReplay(1),
     switchMap((allList) =>
