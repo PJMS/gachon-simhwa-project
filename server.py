@@ -11,7 +11,12 @@ app = Flask(__name__,
             template_folder='dist/portfolio')
 
 
+@app.route('/recom')
+@app.route('/overview')
+@app.route('/foresee')
 @app.route('/')
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
 def indexhtml():
     return render_template('index.html')
 
