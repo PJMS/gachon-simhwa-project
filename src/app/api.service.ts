@@ -40,7 +40,7 @@ export class ApiService {
           diff: new BigNumber(res.estmPrice)
             .div(res.lastPrice)
             .minus(1)
-            .toFixed(2, BigNumber.ROUND_CEIL),
+            .toFixed(4, BigNumber.ROUND_CEIL),
         }))
       );
   }
