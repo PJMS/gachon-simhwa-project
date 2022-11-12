@@ -18,6 +18,7 @@ export class ForeseeComponent implements OnInit {
 
   jongmokCode = new FormControl<string>('');
   prevCount = new FormControl<number>(7);
+  hideWoosun = new FormControl<boolean>(true);
 
   jongmokList$ = this.apiService.getAll().pipe(
     shareReplay(1),
@@ -31,6 +32,17 @@ export class ForeseeComponent implements OnInit {
         code: 종목코드 + '.KS',
         name: 종목명,
       }))
+    ),
+    switchMap((list) =>
+      this.hideWoosun.valueChanges.pipe(
+        startWith(this.hideWoosun.value),
+        map((hide) =>
+          list.filter(
+            ({ code, name }) =>
+              !hide || /우(\(.*\)|[A-Z])?$/.test(name) === false
+          )
+        )
+      )
     ),
     switchMap((list) =>
       this.jongmokCode.valueChanges.pipe(
